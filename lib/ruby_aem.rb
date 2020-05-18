@@ -29,6 +29,7 @@ require 'ruby_aem/resources/replication_agent'
 require 'ruby_aem/resources/outbox_replication_agent'
 require 'ruby_aem/resources/reverse_replication_agent'
 require 'ruby_aem/resources/saml'
+require 'ruby_aem/resources/ssl'
 require 'ruby_aem/resources/repository'
 require 'ruby_aem/resources/truststore'
 require 'ruby_aem/resources/user'
@@ -254,6 +255,14 @@ module RubyAem
       RubyAem::Resources::Saml.new(@client)
     end
 
+    # Create a SSL .
+    #
+    # @return new RubyAem::Resources::SSL instance
+    def ssl(keystore_password, truststore_password, https_hostname, https_port, privatekey_file, certificate_file)
+      RubyAem::Resources::Ssl.new(@client, keystore_password, truststore_password, https_hostname, https_port, privatekey_file, certificate_file)
+    # def ssl(a, b, c, d, e, f)
+    #   RubyAem::Resources::Ssl.new(@client, a, b, c, d, e, f)
+    end
     # Create a Truststore instance.
     #
     # @return new RubyAem::Resources::Truststore instance
